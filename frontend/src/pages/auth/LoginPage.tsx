@@ -37,23 +37,18 @@ export const LoginPage: React.FC = () => {
     }
   };
 
-  const fillDemo = (demoEmail: string, demoPass: string) => {
-    setEmail(demoEmail);
-    setPassword(demoPass);
-  };
-
   return (
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-header">
           <div className="brand-icon" style={{ margin: '0 auto 0.75rem auto' }}>
-            <Store size={28} />
+            <Store size={26} />
           </div>
           <h1>Welcome Back</h1>
-          <p>Sign in to access your StoreRatings account</p>
+          <p>Sign in to your account</p>
         </div>
 
-        {error && <div className="card" style={{ background: 'rgba(239, 68, 68, 0.15)', borderColor: 'rgba(239, 68, 68, 0.4)', color: '#fca5a5', padding: '0.75rem', marginBottom: '1.25rem', fontSize: '0.88rem' }}>{error}</div>}
+        {error && <div className="error-alert">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -61,7 +56,7 @@ export const LoginPage: React.FC = () => {
             <input
               type="email"
               className="form-input"
-              placeholder="user@example.com"
+              placeholder="name@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -91,46 +86,12 @@ export const LoginPage: React.FC = () => {
           </button>
         </form>
 
-        <p style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.9rem', color: '#94a3b8' }}>
+        <p style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
           Don't have an account?{' '}
-          <Link to="/signup" style={{ color: '#6366f1', textDecoration: 'none', fontWeight: 600 }}>
+          <Link to="/signup" style={{ color: 'var(--accent-primary)', textDecoration: 'none', fontWeight: 600 }}>
             Sign up
           </Link>
         </p>
-
-        <div className="demo-credentials">
-          <h4>Demo Test Accounts</h4>
-          <div className="demo-item">
-            <span>System Admin</span>
-            <button
-              type="button"
-              className="demo-btn"
-              onClick={() => fillDemo('admin@storeratings.com', 'AdminPass123!')}
-            >
-              Fill Admin
-            </button>
-          </div>
-          <div className="demo-item">
-            <span>Store Owner</span>
-            <button
-              type="button"
-              className="demo-btn"
-              onClick={() => fillDemo('storeowner.tech@nexus.com', 'OwnerPass123!')}
-            >
-              Fill Store Owner
-            </button>
-          </div>
-          <div className="demo-item">
-            <span>Normal User</span>
-            <button
-              type="button"
-              className="demo-btn"
-              onClick={() => fillDemo('user.christopher@gmail.com', 'UserPass123!')}
-            >
-              Fill User
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
